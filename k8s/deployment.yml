@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: native-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: native-app
+  template:
+    metadata:
+      labels:
+        app: native-app
+    spec:
+      containers:
+      - name: native-app-container
+        image: <your-ecr-image-repo>
+        ports:
+        - name: web
+          containerPort: 5000
+        resources:
+          requests:
+            memory: 256Mi
+            cpu: 250m
+          limits:
+            memory: 256Mi
+            cpu: 250m
+      # affinity:
+      #   nodeAffinity:
+      #     requiredDuringSchedulingIgnoredDuringExecution:
+      #       nodeSelectorTerms:
+      #       - matchExpressions:
+      #         - key: role
+      #           operator: In
+      #           values:
+      #           - general
+      # tolerations:
+      # - key: team
+      #   operator: Equal
+      #   value: devops
+      #   effect: NoSchedule
