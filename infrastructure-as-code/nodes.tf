@@ -34,11 +34,11 @@ resource "aws_eks_node_group" "private-nodes" {
   node_role_arn   = aws_iam_role.nodes.arn
 
   subnet_ids = [
-    aws_subnet.private-us-west-2a.id,
-    aws_subnet.private-us-west-2b.id
+    aws_subnet.private1.id,
+    aws_subnet.private2.id
   ]
 
-  capacity_type  = "SPOT"
+  capacity_type  = "ON_DEMAND"
   instance_types = ["t3.small"]
 
   scaling_config {

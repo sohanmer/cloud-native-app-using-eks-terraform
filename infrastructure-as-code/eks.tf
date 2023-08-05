@@ -28,10 +28,10 @@ resource "aws_eks_cluster" "cloud-native-cluster" {
 
   vpc_config {
     subnet_ids = [
-      aws_subnet.private-us-west-2a.id,
-      aws_subnet.private-us-west-2b.id,
-      aws_subnet.public-us-west-2a.id,
-      aws_subnet.public-us-west-2b.id
+      aws_subnet.private1.id,
+      aws_subnet.private2.id,
+      aws_subnet.public1.id,
+      aws_subnet.public2.id
     ]
   }
 
